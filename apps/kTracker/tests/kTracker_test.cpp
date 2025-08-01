@@ -5,7 +5,7 @@
   */
 #include "../../../tests/catch2/catch.hpp"
 
-#include "../kTracker.hpp"
+#include "../template.hpp"
 
 using namespace MagAOX::app;
 
@@ -20,7 +20,7 @@ SCENARIO( "xxxx", "[template]" )
 
       WHEN("xxxx")
       {
-         rv = 0;
+         rv = [some test];
 
          REQUIRE(rv == 0);
       }

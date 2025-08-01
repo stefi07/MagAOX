@@ -56,11 +56,11 @@ apps_rtc = \
 	dmPokeXCorr \
 	psfAcq
 
-# 	picamCtrl
-# 	pvcamCtrl
 apps_icc = \
 	dmPokeCenter \
 	filterWheelCtrl \
+	picamCtrl \
+	pvcamCtrl \
 	smc100ccCtrl \
 	usbtempMon \
 	xt1121Ctrl \
@@ -69,7 +69,6 @@ apps_icc = \
 	corAlign \
 	adcCtrl
 
-# 	audibleAlerts
 apps_aoc = \
 	trippLitePDU \
 	tcsInterface \
@@ -77,7 +76,8 @@ apps_aoc = \
 	kTracker \
 	koolanceCtrl \
 	observerCtrl \
-	stateRuleEngine
+	stateRuleEngine \
+	audibleAlerts
 
 
 apps_tic = \
@@ -86,65 +86,13 @@ apps_tic = \
 	bmcCtrl \
 	trippLitePDU
 
-#     cameraSim
 apps_sim = \
+    cameraSim \
 	trippLitePDU
 
-all_buildable_apps = \
-	acesxeCtrl \
-	adcTracker \
-	alignLoop \
-	cacaoInterface \
-	closedLoopIndi \
-	dmMode \
-	dmPokeCenter \
-	dmPokeXCorr \
-	dmSpeckle \
-	filterWheelCtrl \
-	flipperCtrl \
-	indiTSAccumulator \
-	koolanceCtrl \
-	kTracker \
-	loPredCtrl \
-	magAOXMaths \
-	modalFilter \
-	modalGainOpt \
-	modalPSDs \
-	mzmqClient \
-	mzmqServer \
-	observerCtrl \
-	pi335Ctrl \
-	picoMotorCtrl \
-	psfAcq \
-	psfFit \
-	pupilFit \
-	pwfsSlopeCalc \
-	refRMS \
-	rhusbMon \
-	shmimIntegrator \
-	siglentSDG \
-	smc100ccCtrl \
-	sparkleClock \
-	sshDigger \
-	stateRuleEngine \
-	streamCircBuff \
-	streamWriter \
-	strehlEstimator \
-	sysMonitor \
-	t2wOffloader \
-	tcsInterface \
-	timeSeriesSimulator \
-	trippLitePDU \
-	ttmModulator \
-	usbtempMon \
-	w2tcsOffloader \
-	xindiserver \
-	xt1121Ctrl \
-	xt1121DCDU \
-	zaberCtrl \
-	zaberLowLevel
-
 libs_to_build = libtelnet
+
+apps_to_build = $(apps_basic)
 
 ifeq ($(MAGAOX_ROLE),AOC)
   apps_to_build += $(apps_common)
@@ -164,11 +112,6 @@ else ifeq ($(MAGAOX_ROLE),SS)
   apps_to_build += $(apps_sim)
 endif
 
-# If building for coverage, build everything that you can.
-ifeq ($(COVERAGE),1)
-	apps_to_build :=  ${all_buildable_apps}
-endif
-
 all_guis = \
 	dmCtrlGUI \
 	dmModeGUI \
@@ -180,12 +123,6 @@ all_guis = \
 	roiGUI \
 	cameraGUI \
 	stageGUI
-
-# If building for coverage, don't build guis for now
-ifeq ($(COVERAGE),1)
-	all_guis := 
-endif
-
 
 ifeq ($(MAGAOX_ROLE),RTC)
   guis_to_build =
@@ -413,13 +350,3 @@ setup:
 .PHONY: print_role
 print_role:
 	@echo "MAGAOX_ROLE=$(MAGAOX_ROLE)"
-
-.PHONY: coverage
-coverage:
-	${MAKE} all COVERAGE=1
-
-coverage_clean:
-	find . -name '*.gcno' -delete
-	find . -name '*.gcda' -delete
-	find . -name '*.gcov' -delete
-	${MAKE} all_clean COVERAGE=1

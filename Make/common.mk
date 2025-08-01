@@ -30,11 +30,6 @@ endif
 CFLAGS += -D_XOPEN_SOURCE=700
 CXXFLAGS += -D_XOPEN_SOURCE=700
 
-ifeq ($(COVERAGE),1)
-  CFLAGS += --coverage
-  CXXFLAGS += --coverage
-endif
-
 #Need this on COS-7, doesn't hurt elsewhere.
 #CXXFLAGS += -DMX_OLD_GSL
 
@@ -54,13 +49,7 @@ INCLUDES += $(shell pkg-config --cflags eigen3)
 ########################################
 ## Optimize Flags
 #######################################
-OPTIMIZE ?= -fopenmp -ffast-math
-
-ifeq ($(COVERAGE),1)
-  OPTIMIZE += -O0
-else
-  OPTIMIZE += -O3
-endif
+OPTIMIZE ?= -O3 -fopenmp -ffast-math
 
 ########################################
 ## Libraries
@@ -194,10 +183,6 @@ endif
 
 LDLIBS += $(EXTRA_LDLIBS)
 LDFLAGS += $(EXTRA_LDFLAGS)
-
-ifeq ($(COVERAGE),1)
-  LDFLAGS += --coverage
-endif
 
 #Hard-code the paths to system libraries so setuid works
 LDLIBRPATH := $(shell echo $$LD_LIBRARY_PATH | sed 's/::/:/g' |  sed 's/:/ -Wl,-rpath,/g')

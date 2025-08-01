@@ -4,7 +4,7 @@
   * History:
   */
 #include "../../../tests/catch2/catch.hpp"
-#include "../../../tests/testMacrosINDI.hpp"
+#include "../../tests/testMacrosINDI.hpp"
 
 #include "../kcubeCtrl.hpp"
 
@@ -39,7 +39,7 @@ SCENARIO( "xxxx", "[kcubeCtrl]" )
 
       WHEN("xxxx")
       {
-         rv = [];
+         rv = [some test];
 
          REQUIRE(rv == 0);
       }
