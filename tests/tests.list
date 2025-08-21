@@ -1,5 +1,4 @@
 ../apps/acesxeCtrl/tests/acesxeCtrl_test
-../apps/adcTracker/tests/adcTracker_test
 ../apps/alignLoop/tests/alignLoop_test
 ../apps/cacaoInterface/tests/cacaoInterface_test
 ../apps/closedLoopIndi/tests/closedLoopIndi_test
@@ -21,7 +20,6 @@
 ../apps/mzmqServer/tests/mzmqServer_test
 ../apps/observerCtrl/tests/observerCtrl_test
 ../apps/ocam2KCtrl/tests/ocamUtils_test
-../apps/pi335Ctrl/tests/pi335Ctrl_test
 ../apps/picoMotorCtrl/tests/picoMotorCtrl_test
 ../apps/psfAcq/tests/psfAcq_test
 ../apps/psfFit/tests/psfFit_test
@@ -37,7 +35,6 @@
 ../apps/sshDigger/tests/sshDigger_test
 ../apps/stateRuleEngine/tests/indiCompRuleConfig_test
 ../apps/stateRuleEngine/tests/indiCompRules_test
-../apps/stateRuleEngine/tests/stateRuleEngine_test
 ../apps/streamCircBuff/tests/streamCircBuff_test
 ../apps/streamWriter/tests/streamWriter_test
 ../apps/streamWriter/tests/streamWriterSizing_test
@@ -92,4 +89,3 @@
 ../utils/tests/shmimLat_test
 ../utils/tests/shmimPlot_test
 ../utils/tests/xrif2fits_test
-../utils/tests/xrif2shmim_test

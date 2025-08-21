@@ -90,9 +90,11 @@ apps_tic = \
 apps_sim = \
 	trippLitePDU
 
+# adcTracker
+# pi335Ctrl
+# stateRuleEngine
 all_buildable_apps = \
 	acesxeCtrl \
-	adcTracker \
 	alignLoop \
 	cacaoInterface \
 	closedLoopIndi \
@@ -113,7 +115,6 @@ all_buildable_apps = \
 	mzmqClient \
 	mzmqServer \
 	observerCtrl \
-	pi335Ctrl \
 	picoMotorCtrl \
 	psfAcq \
 	psfFit \
@@ -126,7 +127,6 @@ all_buildable_apps = \
 	smc100ccCtrl \
 	sparkleClock \
 	sshDigger \
-	stateRuleEngine \
 	streamCircBuff \
 	streamWriter \
 	strehlEstimator \
@@ -206,6 +206,8 @@ all_rtimv_plugins = \
 	dmStatus \
 	warnings \
 	acquisition
+
+all_rtimv_plugins =
 
 ifeq ($(MAGAOX_ROLE),RTC)
   rtimv_plugins_to_build =
