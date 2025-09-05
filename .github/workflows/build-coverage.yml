@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/joseph-long/magao-x-setup-develop:main
+      options: --user root
     steps:
       - name: Install Packages
         run: dnf install -y lcov make libusb-devel libusbx-devel
